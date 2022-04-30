@@ -1,0 +1,98 @@
+{
+  "name": "@mysql/xdevapi",
+  "version": "8.0.28",
+  "description": "MySQL Connector/Node.js - A Node.js driver for MySQL using the X Protocol and X DevAPI.",
+  "contributors": [
+    {
+      "name": "Johannes Schlüter",
+      "email": "johannes.schlueter@oracle.com"
+    },
+    {
+      "name": "Rui Quelhas",
+      "email": "rui.quelhas@oracle.com"
+    },
+    {
+      "name": "Amitabh Das",
+      "email": "amitabh.das@oracle.com"
+    }
+  ],
+  "license": "GPL-2.0",
+  "main": "index.js",
+  "files": [
+    "CHANGES.txt",
+    "CONTRIBUTING.md",
+    "README.md",
+    "README.txt",
+    "docs/",
+    "lib/",
+    "test/"
+  ],
+  "keywords": [
+    "MySQL",
+    "MySQL X DevAPI",
+    "mysqlx",
+    "Databases",
+    "Database"
+  ],
+  "homepage": "http://www.mysql.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mysql/mysql-connector-nodejs.git"
+  },
+  "bugs": {
+    "url": "http://bugs.mysql.com"
+  },
+  "scripts": {
+    "coverage": "nyc npm run test",
+    "coverage:functional": "nyc npm run test:functional",
+    "coverage:summary": "nyc report --reporter=text-summary",
+    "coverage:unit": "nyc npm run test:unit",
+    "linter:checks": "standardx --verbose | snazzy",
+    "linter:fixes": "standardx --fix",
+    "mocha": "mocha --reporter spec --timeout 10000 --recursive",
+    "prepack": "node bin/prepack.js",
+    "pretest": "node bin/wait-for.js",
+    "test": "npm run mocha test/unit test/functional/default",
+    "test:functional": "npm run pretest && npm run mocha test/functional/default",
+    "test:unit": "npm run mocha test/unit"
+  },
+  "dependencies": {
+    "google-protobuf": "3.14.0",
+    "parsimmon": "1.16.0"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "devDependencies": {
+    "chai": "4.3.4",
+    "dns2": "1.4.2",
+    "eslint-plugin-header": "3.1.0",
+    "mocha": "8.2.1",
+    "nyc": "15.1.0",
+    "snazzy": "9.0.0",
+    "standardx": "7.0.0",
+    "testdouble": "3.16.1",
+    "timekeeper": "2.2.0"
+  },
+  "nyc": {
+    "branches": 75,
+    "check-coverage": true,
+    "exclude": [
+      "bin",
+      "lib/Protocol/Stubs",
+      "test"
+    ],
+    "functions": 75,
+    "lines": 75,
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "statements": 75
+  },
+  "standardx": {
+    "ignore": [
+      "**/mysqlx*_pb.js"
+    ]
+  }
+}
